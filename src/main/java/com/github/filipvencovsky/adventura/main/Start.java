@@ -30,7 +30,20 @@ public class Start extends Application
      */
     public static void main(String[] args)
     {
-//		  TODO parametrické spuštění hry
+
+    	if (args.length == 0) {
+            launch(args);
+        } else {
+            if (args[0].equals("-text")) {
+                IHra hra = new Hra();
+                TextoveRozhrani ui = new TextoveRozhrani(hra);
+                ui.hraj();
+            } else {
+                System.out.println("Neplatný parametr");
+            }
+        }
+    	
+    	//		  TODO parametrické spuštění hry
 //        IHra hra = new Hra();
 //        TextoveRozhrani ui = new TextoveRozhrani(hra);
 //        ui.hraj();
@@ -48,10 +61,9 @@ public class Start extends Application
     	loader.setLocation(getClass().getResource("../ui/MainWindow.fxml"));    	
     	Parent root = loader.load();
 
- //		TODO předání hry kontroleru
-//    	HomeController controller = loader.getController();
-//    	IHra hra = new Hra();
-//		controller.inicializuj(hra);
+    	HomeController controller = loader.getController();
+    	IHra hra = new Hra();
+		controller.inicializuj(hra);
     	
     	primaryStage.setScene(new Scene(root));
     	primaryStage.show();

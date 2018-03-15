@@ -1,5 +1,7 @@
 package com.github.filipvencovsky.adventura.ui;
 
+import com.github.filipvencovsky.adventura.logika.IHra;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -22,6 +24,10 @@ public class HomeController extends GridPane {
 	public void odesliPrikaz() {
 //		TODO zpracovat příkaz a vepsat výsledek do výstupní oblasti
 		System.out.println(textVstup.getText());
+		
+	}
+	
+	public void inicializuj(IHra hra) {
 		
 	}
 
