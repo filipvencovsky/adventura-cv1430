@@ -3,6 +3,7 @@ package com.github.filipvencovsky.adventura.ui;
 import com.github.filipvencovsky.adventura.logika.IHra;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -16,6 +17,8 @@ import javafx.scene.layout.GridPane;
 public class HomeController extends GridPane {
 	
 	@FXML private TextField textVstup;
+	@FXML private TextArea textVypis;
+	private IHra hra;
 	
 	/**
 	 * Metoda čte příkaz ze vstupního textového pole
@@ -28,7 +31,8 @@ public class HomeController extends GridPane {
 	}
 	
 	public void inicializuj(IHra hra) {
-		
+		this.hra = hra;
+		textVypis.setText(hra.vratUvitani());
 	}
 
 }
