@@ -25,8 +25,11 @@ public class HomeController extends GridPane {
 	 * a zpracuje ho...
 	 */
 	public void odesliPrikaz() {
-//		TODO zpracovat příkaz a vepsat výsledek do výstupní oblasti
-		System.out.println(textVstup.getText());
+		
+		String vypis = hra.zpracujPrikaz(textVstup.getText());
+		textVypis.appendText("\n--------\n"+textVstup.getText()+"\n--------\n");
+		textVypis.appendText(vypis);
+		textVstup.setText("");
 		
 	}
 	
