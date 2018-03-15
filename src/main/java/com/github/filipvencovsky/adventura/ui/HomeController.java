@@ -1,9 +1,11 @@
 package com.github.filipvencovsky.adventura.ui;
 
 import com.github.filipvencovsky.adventura.logika.IHra;
+import com.github.filipvencovsky.adventura.logika.Prostor;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -20,6 +22,7 @@ public class HomeController extends GridPane {
 	@FXML private TextField textVstup;
 	@FXML private TextArea textVypis;
 	@FXML private Button odesli;
+	@FXML private ListView<Prostor> seznamMistnosti;
 	private IHra hra;
 	
 	/**
@@ -44,6 +47,7 @@ public class HomeController extends GridPane {
 	public void inicializuj(IHra hra) {
 		this.hra = hra;
 		textVypis.setText(hra.vratUvitani());
+		seznamMistnosti.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
 	}
 
 }
