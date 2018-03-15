@@ -1,5 +1,8 @@
 package com.github.filipvencovsky.adventura.ui;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import com.github.filipvencovsky.adventura.logika.IHra;
 import com.github.filipvencovsky.adventura.logika.Prostor;
 
@@ -17,7 +20,7 @@ import javafx.scene.layout.GridPane;
  * @author Filip Vencovsky
  *
  */
-public class HomeController extends GridPane {
+public class HomeController extends GridPane implements Observer {
 	
 	@FXML private TextField textVstup;
 	@FXML private TextArea textVypis;
@@ -48,6 +51,13 @@ public class HomeController extends GridPane {
 		this.hra = hra;
 		textVypis.setText(hra.vratUvitani());
 		seznamMistnosti.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
+		hra.getHerniPlan().addObserver(this);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		seznamMistnosti.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
+		
 	}
 
 }
